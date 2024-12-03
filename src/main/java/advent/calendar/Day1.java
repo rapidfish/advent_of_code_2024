@@ -23,10 +23,12 @@ public class Day1 {
             .toList();
         var list1Sorted = tuples.stream().map(LocationID::getFirst).sorted().toList();
         var list2Sorted = tuples.stream().map(LocationID::getSecond).sorted().toList();
-        var sum1 = IntStream.range(0, tuples.size()).map(i -> Math.abs(list1Sorted.get(i) - list2Sorted.get(i))).sum();
-        DayHelper.printDay(this, 1, sum1); // 1388114
-        var sum2 = list1Sorted.stream().mapToLong(i1 -> Math.multiplyExact(i1, list2Sorted.stream().filter(i2 -> i2.compareTo(i1) == 0).count())).sum();
-        DayHelper.printDay(this, 2, sum2); // 23529853
+
+        var result1 = IntStream.range(0, tuples.size()).map(i -> Math.abs(list1Sorted.get(i) - list2Sorted.get(i))).sum();
+        DayHelper.printDay(this, 1, result1); // 1388114
+
+        var result2 = list1Sorted.stream().mapToLong(i1 -> Math.multiplyExact(i1, list2Sorted.stream().filter(i2 -> i2.compareTo(i1) == 0).count())).sum();
+        DayHelper.printDay(this, 2, result2); // 23529853
     }
 
     public static void main(String[] args) throws IOException {
